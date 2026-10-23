@@ -17,6 +17,7 @@ apps can use it.
 | Front colour | OV5670 on IPU3 (ACPI `INT3479`, LNK0) | Works with this repo |
 | Rear colour | OV8858 on IPU3 (ACPI `INT3477`, LNK1) | Not yet. See [docs/rear-camera.md](docs/rear-camera.md) |
 | Front IR (Windows Hello) | Realtek USB UVC `0bda:551a`, 340x340 grey | Works out of the box; the emitter strobes on every other frame. See [docs/ir-camera.md](docs/ir-camera.md) |
+| Face unlock | Howdy on the IR camera | Lock screen unlocks by face. See [docs/howdy.md](docs/howdy.md) |
 
 ## Why the front camera does not work out of the box
 

@@ -11,6 +11,7 @@
 | 前置彩色 | IPU3 上的 OV5670（ACPI `INT3479`，LNK0） | 用本仓库即可工作 |
 | 后置彩色 | IPU3 上的 OV8858（ACPI `INT3477`，LNK1） | 尚未完成，见 [docs/rear-camera.md](docs/rear-camera.md) |
 | 前置红外（Windows Hello） | Realtek USB UVC `0bda:551a`，340×340 灰度 | 开箱即用，补光灯每隔一帧闪一次，见 [docs/ir-camera.md](docs/ir-camera.md) |
+| 人脸解锁 | 红外摄像头 + Howdy | 锁屏可刷脸解锁（开机登录和 sudo 仍用密码），见 [docs/howdy.md](docs/howdy.md) |
 
 ## 为什么默认不工作
 
