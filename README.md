@@ -16,7 +16,7 @@ apps can use it.
 |---|---|---|
 | Front colour | OV5670 on IPU3 (ACPI `INT3479`, LNK0) | Works with this repo |
 | Rear colour | OV8858 on IPU3 (ACPI `INT3477`, LNK1) | Not yet. See [docs/rear-camera.md](docs/rear-camera.md) |
-| Front IR (Windows Hello) | Realtek USB UVC `0bda:551a`, 340x340 grey | Sensor works, IR emitter is off. See [docs/ir-camera.md](docs/ir-camera.md) |
+| Front IR (Windows Hello) | Realtek USB UVC `0bda:551a`, 340x340 grey | Works out of the box; the emitter strobes on every other frame. See [docs/ir-camera.md](docs/ir-camera.md) |
 
 ## Why the front camera does not work out of the box
 
@@ -91,7 +91,7 @@ Take a test photo (needs `ffmpeg`):
 ## Using the camera in apps
 
 - Apps see two front cameras. `ov5670` is the colour camera.
-  `Integrated_Webcam_HD` is the IR sensor, which shows an almost black image.
+  `Integrated_Webcam_HD` is the IR camera, which shows a flickering grey image.
 - Firefox uses the PipeWire camera portal by default on recent versions.
 - Chrome and Chromium need `chrome://flags/#enable-webrtc-pipewire-camera`
   enabled.

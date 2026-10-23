@@ -10,7 +10,7 @@
 |---|---|---|
 | 前置彩色 | IPU3 上的 OV5670（ACPI `INT3479`，LNK0） | 用本仓库即可工作 |
 | 后置彩色 | IPU3 上的 OV8858（ACPI `INT3477`，LNK1） | 尚未完成，见 [docs/rear-camera.md](docs/rear-camera.md) |
-| 前置红外（Windows Hello） | Realtek USB UVC `0bda:551a`，340×340 灰度 | 传感器正常，红外补光灯未开启，见 [docs/ir-camera.md](docs/ir-camera.md) |
+| 前置红外（Windows Hello） | Realtek USB UVC `0bda:551a`，340×340 灰度 | 开箱即用，补光灯每隔一帧闪一次，见 [docs/ir-camera.md](docs/ir-camera.md) |
 
 ## 为什么默认不工作
 
@@ -51,7 +51,7 @@ sudo ./scripts/install.sh --show-grub-menu
 
 ## 在软件里使用
 
-- 软件里会看到两个前置摄像头：`ov5670` 是彩色摄像头；`Integrated_Webcam_HD` 是红外传感器，画面几乎全黑。
+- 软件里会看到两个前置摄像头：`ov5670` 是彩色摄像头；`Integrated_Webcam_HD` 是红外摄像头，画面是闪烁的灰度图。
 - 新版 Firefox 默认通过 PipeWire 调用摄像头。
 - Chrome / Chromium 需要在 `chrome://flags/#enable-webrtc-pipewire-camera` 里打开 PipeWire 摄像头支持。
 

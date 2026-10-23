@@ -14,6 +14,9 @@ the Windows driver on a Dell Realtek camera).
 Usage:
   rtk-ir.py probe [DEVICE]    read identification registers and 0x9f00 (no writes
                               to data registers)
+
+The emitter on this camera does not need any of this: it strobes on every
+other frame as soon as the camera streams. See docs/ir-camera.md.
 """
 import ctypes
 import fcntl
