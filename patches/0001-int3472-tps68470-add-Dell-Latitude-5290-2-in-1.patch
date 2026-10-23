@@ -1,0 +1,16 @@
+--- a/drivers/platform/x86/intel/int3472/tps68470_board_data.c
++++ b/drivers/platform/x86/intel/int3472/tps68470_board_data.c
+@@ -316,6 +316,13 @@
+ 		},
+ 		.driver_data = (void *)&dell_7212_tps68470_board_data,
+ 	},
++	{
++		.matches = {
++			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Latitude 5290 2-in-1"),
++		},
++		.driver_data = (void *)&dell_7212_tps68470_board_data,
++	},
+ 	{ }
+ };
+ 
