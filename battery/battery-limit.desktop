@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Name=Battery Limit 60/100
+Name[zh_CN]=电池充电上限 60%/100% 切换
+Comment=Toggle the battery charge limit between 60% and 100%
+Comment[zh_CN]=在 60% 和 100% 之间切换充电上限
+Exec=/usr/local/bin/battery-limit toggle
+Icon=battery
+Terminal=false
+Categories=Settings;HardwareSettings;
+Actions=limit60;limit100;
+
+[Desktop Action limit60]
+Name=Limit to 60%
+Name[zh_CN]=充到 60%
+Exec=/usr/local/bin/battery-limit 60
+
+[Desktop Action limit100]
+Name=Charge to 100%
+Name[zh_CN]=充到 100%
+Exec=/usr/local/bin/battery-limit 100

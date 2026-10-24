@@ -1,0 +1,43 @@
+#!/bin/bash
+# Switch the battery charge limit between 60% and 100%.
+#   battery-limit            show the current setting
+#   battery-limit 60|100     set it
+#   battery-limit toggle     switch to the other one
+set -euo pipefail
+
+BAT=/sys/class/power_supply/BAT0
+HELPER=/usr/local/libexec/battery-limit-helper
+
+mode() { grep -o '\[[A-Za-z]*\]' "$BAT/charge_types" | tr -d '[]'; }
+
+describe() {
+	if [ "$(mode)" = Custom ]; then
+		echo "充电上限 $(cat "$BAT/charge_control_end_threshold")%（低于 $(cat "$BAT/charge_control_start_threshold")% 才开始充）"
+	else
+		echo "充电到 100%（$(mode) 模式）"
+	fi
+}
+
+notify() {
+	command -v notify-send >/dev/null && notify-send -a "电池" -i battery "$1" "当前电量 $(cat "$BAT/capacity")%" || true
+}
+
+target="${1:-}"
+if [ "$target" = toggle ]; then
+	if [ "$(mode)" = Custom ]; then target=100; else target=60; fi
+fi
+
+case "$target" in
+"")
+	describe
+	;;
+60|100)
+	pkexec "$HELPER" "$target"
+	describe
+	notify "$(describe)"
+	;;
+*)
+	echo "usage: battery-limit [60|100|toggle]" >&2
+	exit 2
+	;;
+esac

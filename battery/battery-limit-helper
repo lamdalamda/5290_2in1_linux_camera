@@ -1,0 +1,23 @@
+#!/bin/bash
+# Root helper: set the Dell battery charge mode through the dell-laptop driver.
+# The setting is stored by the BIOS and survives reboots and other OSes.
+#   60   Custom mode, start charging below 50%, stop at 60%
+#   100  Standard mode, charge to 100%
+set -euo pipefail
+
+BAT=/sys/class/power_supply/BAT0
+
+case "${1:-}" in
+60)
+	echo 50 > "$BAT/charge_control_start_threshold"
+	echo 60 > "$BAT/charge_control_end_threshold"
+	echo Custom > "$BAT/charge_types"
+	;;
+100)
+	echo Standard > "$BAT/charge_types"
+	;;
+*)
+	echo "usage: $0 60|100" >&2
+	exit 2
+	;;
+esac
